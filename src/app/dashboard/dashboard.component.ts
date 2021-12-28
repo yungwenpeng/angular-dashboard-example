@@ -23,6 +23,11 @@ let dataSetup = {
   ]
 };
 
+interface timeIntervalItem {
+  value: number;
+  viewValue: string;
+}
+
 
 @Component({
   selector: 'app-dashboard',
@@ -41,6 +46,14 @@ export class DashboardComponent implements OnInit {
   public lastestTemperatureReading: any;
 
   public intervalId : any;
+
+  selectedValue: any;
+  timeIntervals: timeIntervalItem[] = [
+    {value: 5, viewValue: '5'},
+    {value: 10, viewValue: '10'},
+    {value: 20, viewValue: '20'},
+    {value: 30, viewValue: '30'},
+  ];
 
   constructor() { }
 
@@ -93,7 +106,7 @@ export class DashboardComponent implements OnInit {
   }
 
   addDataToChart(chart, label, temperature, humidity) {
-    let limit = 10;
+    let limit = this.selectedValue;
     console.log('limit: ' + limit);
     //console.log('temperature - ' + temperature + ',humidity - ' + humidity);
     chart.data.labels.push(label);

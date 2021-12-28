@@ -29,3 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Others :  
 ## Refer to [Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
 ## Refer to [angular material](https://material.angular.io/components/categories)  
+  
+## Demo:  
+![angular-dashboard-example](angular-dashboard-example.gif)  

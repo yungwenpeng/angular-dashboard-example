@@ -1,5 +1,13 @@
 <p>dashboard works!</p>
 <div>
+    <mat-form-field appearance="fill">
+        <mat-label>Interval</mat-label>
+        <mat-select [(ngModel)]="selectedValue">
+            <mat-option *ngFor="let ti of timeIntervals" [value]="ti.value">
+                {{ti.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 
     <mat-list>
         <mat-list-item >Current Temperature: {{ lastestTemperatureReading }} °C ,
