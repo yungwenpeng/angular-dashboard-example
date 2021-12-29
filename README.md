@@ -26,9 +26,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
   
+# How to use:  
+$ npm install  
+$ ng serve  
+  
 ## Others :  
-## Refer to [Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
-## Refer to [angular material](https://material.angular.io/components/categories)  
+# Refer to [Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
+# Refer to [angular material](https://material.angular.io/components/categories)  
   
 ## Demo:  
 ![angular-dashboard-example](angular-dashboard-example.gif)  
