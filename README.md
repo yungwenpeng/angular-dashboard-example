@@ -27,12 +27,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
   
 # How to use:  
-$ npm install  
-$ ng serve  
+  $ npm install  
+  
+  * Copy the config object snippet from the Firebase SDK snippet pane to src/environments/environment.ts  
+  ![firebaseconfig](img/firebaseconfig.png)  
+  * change documentPath to your path in src/app/dashboard/dashboard.component.ts
+  
+  $ ng serve  
   
 ## Others :  
-# Refer to [Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
-# Refer to [angular material](https://material.angular.io/components/categories)  
+### Refer to [Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
+### Refer to [angular material](https://material.angular.io/components/categories)  
   
 ## Demo:  
-![angular-dashboard-example](angular-dashboard-example.gif)  
+![angular-dashboard-example](img/angular-dashboard-example.gif)  

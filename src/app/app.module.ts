@@ -4,6 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// for @angular/fire : start
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+// for @angular/fire : end
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -28,6 +33,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+// for @angular/fire : start
+    AngularFireModule.initializeApp(environment.firebaseConfig),    // imports firebase/app needed for everything
+// for @angular/fire : end
 
     MatButtonModule,
     MatButtonToggleModule,

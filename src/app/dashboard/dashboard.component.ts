@@ -1,7 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Chart, registerables } from 'chart.js';
+
+import { environment } from '../../environments/environment';
+
+// for @angular/fire : start
+// AngularFire v7.0 has a compatibility layer that supports the AngularFire v6.0 API
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { debounceTime } from 'rxjs/operators';
+// for @angular/fire : end
+
 Chart.register(...registerables);
+
+let documentPath = '### YOUR PATH ###';
 
 let dataSetup = {
   labels: [],
@@ -55,13 +66,34 @@ export class DashboardComponent implements OnInit {
     {value: 30, viewValue: '30'},
   ];
 
-  constructor() { }
+  // for @angular/fire : start
+  constructor(private firestore: AngularFirestore ) { }
+  // for @angular/fire : end
 
   ngOnInit(): void {
     //console.log('ngOnInit');
     this.initTimeseriesChart();
 
-    this.start();
+    // for @angular/fire : start
+    this.firestore.collection(documentPath,
+      ref => ref.orderBy('timestamp', 'desc').limit(1))
+            .valueChanges()
+            .pipe(debounceTime(200))
+            .subscribe(
+              measurement => {
+                console.log('latestMeasurement:', measurement[0]);
+                const d = new Date(measurement[0]['timestamp'] * 1000);
+                let timestamp = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                console.log( timestamp );
+                this.addDataToChart(this.chartTimeseries, timestamp,
+                                    measurement[0]['temperature'], measurement[0]['humidity']);
+                this.lastestTemperatureReading = measurement[0]['temperature'];
+                this.lastestHumidityReading = measurement[0]['humidity'];
+              }
+            );
+    // for @angular/fire : end
+
+    //this.start();
   }
 
   ngOnDestroy(): void {
