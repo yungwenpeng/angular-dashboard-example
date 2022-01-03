@@ -10,6 +10,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { debounceTime } from 'rxjs/operators';
 // for @angular/fire : end
 
+// for firebase/firestore : start
+// Initialize Cloud Firestore through Firebase
+import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
+import { initializeApp } from "firebase/app"
+// for firebase/firestore : end
+
 Chart.register(...registerables);
 
 let documentPath = '### YOUR PATH ###';
@@ -39,6 +45,11 @@ interface timeIntervalItem {
   viewValue: string;
 }
 
+// for firebase/firestore : start
+// Initialize Firebase
+const firebaseApp = initializeApp(environment.firebaseConfig);
+const db = getFirestore();
+// for firebase/firestore : end
 
 @Component({
   selector: 'app-dashboard',
@@ -67,14 +78,18 @@ export class DashboardComponent implements OnInit {
   ];
 
   // for @angular/fire : start
-  constructor(private firestore: AngularFirestore ) { }
+  //constructor(private firestore: AngularFirestore ) { }
   // for @angular/fire : end
+  // for firebase/firestore : start
+  constructor() { }
+  // for firebase/firestore : end
 
   ngOnInit(): void {
     //console.log('ngOnInit');
     this.initTimeseriesChart();
 
     // for @angular/fire : start
+    /*
     this.firestore.collection(documentPath,
       ref => ref.orderBy('timestamp', 'desc').limit(1))
             .valueChanges()
@@ -91,7 +106,25 @@ export class DashboardComponent implements OnInit {
                 this.lastestHumidityReading = measurement[0]['humidity'];
               }
             );
+    */
     // for @angular/fire : end
+
+    // for firebase/firestore : start
+    const measurementsRef = collection(db, documentPath);
+    const measurementsDoc = query(measurementsRef, orderBy("timestamp", "desc"), limit(1));
+    const unsubscribe = onSnapshot(measurementsDoc, (querySnapshot) => {
+      querySnapshot.forEach((measurement) => {
+        let jsonTmp = JSON.parse(JSON.stringify(measurement.data()))
+        console.log('latestMeasurement1: ', measurement.id, " => ", jsonTmp);
+        const d = new Date(jsonTmp['timestamp'] * 1000);
+        let timestamp = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        //console.log( timestamp );
+        this.addDataToChart(this.chartTimeseries, timestamp, jsonTmp['temperature'], jsonTmp['humidity']);
+        this.lastestTemperatureReading = jsonTmp['temperature'];
+        this.lastestHumidityReading = jsonTmp['humidity'];
+      });
+    });
+    // for firebase/firestore : end
 
     //this.start();
   }
