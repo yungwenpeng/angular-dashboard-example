@@ -1,0 +1,32 @@
+.logo-container {
+  position: relative;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  margin: 50px;
+  width: 60%;
+  transition: .5s ease;
+  opacity: 0;
+  color: rgb(240, 234, 234);
+  font-size: 12px;
+  text-align: right;
+  font-weight: bold;
+  display: inline-flex;
+  background-color: #6d6d70;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.logo-container:hover .overlay {
+  opacity: 1;
+}
+
+#offcanvasExample {
+  background-image: url(../../assets/siderbar_bg.png);
+  height: 100%;
+  max-width: 25%;
+  background-repeat: no-repeat space;
+  background-position: center;
+  background-size: cover;
+}

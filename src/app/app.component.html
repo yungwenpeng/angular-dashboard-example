@@ -1,28 +1,11 @@
-<div fxHide = "false">
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      #drawer
-      class="sidenav"
-      fixedInViewport="true">
-      <mat-toolbar color="#45EE02"></mat-toolbar>
-      <mat-nav-list (click)="drawer.toggle()">
-        <a mat-list-item [routerLink]="['dashboard']">
-          <mat-icon>dashboard</mat-icon> dashboard
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <span>Menu</span>
-      </mat-toolbar>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<app-sidebar></app-sidebar>
+
+<div class="md-9 ms-sm-auto px-md-4" [ngStyle]="{
+    'backgroundImage':'url(../../assets/welcome_bg.png)',
+    'height': '100%',
+    'background-repeat': 'no-repeat space',
+    'background-position': 'center',
+    'background-size': 'cover'
+  }">
+  <router-outlet></router-outlet>
 </div>
