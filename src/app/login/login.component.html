@@ -6,23 +6,23 @@
         Invalid User Name or Password
       </div>
       <div class="form-group">
-        <label for="email">User Name:</label>
+        <label for="username">User Name:</label>
         <input class="form-control" autofocus [ngClass]="{
-            'is-valid': loginForm.controls['email'].valid,
-            'is-invalid': loginForm.controls['email'].invalid
-          }" type="text" name="email" formControlName="email" placeholder="Ex. tset@example.com" />
+            'is-valid': loginForm.controls['username'].valid,
+            'is-invalid': loginForm.controls['username'].invalid
+          }" type="text" name="username" formControlName="username" placeholder="Ex. tset@example.com" />
         <div class="alert alert-danger" [hidden]="
             !(
-              loginForm.controls['email'].dirty &&
-              loginForm.controls['email'].errors?.['required']
+              loginForm.controls['username'].dirty &&
+              loginForm.controls['username'].errors?.['required']
             )
           ">
           Enter User Name
         </div>
         <div class="alert alert-danger" [hidden]="
             !(
-              loginForm.controls['email'].dirty &&
-              loginForm.controls['email'].errors?.['minlength']
+              loginForm.controls['username'].dirty &&
+              loginForm.controls['username'].errors?.['minlength']
             )
           ">
           Minimum 6 characters needed for User Name
@@ -34,7 +34,8 @@
           <input class="form-control" [ngClass]="{
             'is-valid': loginForm.controls['password'].valid,
             'is-invalid': loginForm.controls['password'].invalid
-          }" type="text" name="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+          }" type="text" name="password" formControlName="password" [type]="hide ? 'password' : 'text'"
+            autocomplete="on" />
           <div class="input-group-prepend">
             <button class="btn" type="button" style="background-color: #d9dadb;" (click)="hide = !hide">
               <i class="bi bi-eye-fill blue-color" *ngIf="hide"></i>

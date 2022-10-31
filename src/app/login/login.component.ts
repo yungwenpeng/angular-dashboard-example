@@ -11,10 +11,10 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  hide : boolean = true;
-  
+  hide: boolean = true;
+
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 

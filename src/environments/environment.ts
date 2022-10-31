@@ -17,8 +17,13 @@ export const environment = {
 
 export const serverConfig = {
   localhost: 'localhost',
-  port: '3000',
+  port: '8080',
 };
 
 // For http client
 export const apiUrl = 'http://' + serverConfig.localhost + ':' + serverConfig.port + '/api/';
+export const webSocketUrl = 'ws://' + serverConfig.localhost + ':' + serverConfig.port + '/api/'
+
+// For https client
+//export const apiUrl = 'https://' + serverConfig.localhost + ':' + serverConfig.port + '/api/';
+//export const webSocketUrl = 'wss://' + serverConfig.localhost + ':' + serverConfig.port + '/api/'

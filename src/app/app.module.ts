@@ -24,6 +24,9 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/http.interdceptor';
+import { DeviceComponent } from './device/device.component';
+import { NgChartsModule } from 'ng2-charts';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { TokenInterceptorService } from './services/http.interdceptor';
     DashboardComponent,
     HomeComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ import { TokenInterceptorService } from './services/http.interdceptor';
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes),
     HttpClientModule,
+    FlexLayoutModule,
+    NgChartsModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }],
   bootstrap: [AppComponent]

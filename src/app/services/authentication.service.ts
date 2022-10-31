@@ -23,26 +23,23 @@ export class AuthenticationService {
   }
 
   authentication(user: User): void {
-    var body ={ email: user.email, password: user.password }
-    console.log(apiUrl + "login , " + JSON.stringify(user));
-    this.httpClient.post<AuthenticationResponse>(apiUrl + "login", body)
-    .subscribe(
-      {
-        next: response => {
-          console.log('authentication: ', JSON.stringify(response));
-          if(response.token !== undefined) {
-            console.log(response.token);
-            localStorage['token'] = response.token;
-            this.router.navigate(['device']);
-          } else {
+    this.httpClient.post<AuthenticationResponse>(apiUrl + "auth/login", user)
+      .subscribe(
+        {
+          next: response => {
+            if (response.token !== undefined) {
+              console.log(response.token);
+              localStorage['token'] = response.token;
+              this.router.navigate(['home']);
+            } else {
+              this.isAuthenticationFailedSubject.next(true);
+            }
+          },
+          error: error => {
             this.isAuthenticationFailedSubject.next(true);
           }
-        },
-        error: error => {
-          this.isAuthenticationFailedSubject.next(true);
         }
-      }
-    )
+      )
   }
 
   logout() {

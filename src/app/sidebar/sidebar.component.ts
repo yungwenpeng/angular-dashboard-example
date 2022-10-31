@@ -23,7 +23,7 @@ export class SidebarComponent {
       return false;
     } else {
       const decodedToken: any = jwt_decode(localStorage['token'])
-      this.LoginUserFirstName = decodedToken['userName']
+      this.LoginUserFirstName = decodedToken['sub'].slice(0, decodedToken['sub'].lastIndexOf("@"))
       this.navbarItemName = this.Location.path().substring(1) || ''
     }
     return true;
