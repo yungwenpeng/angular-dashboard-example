@@ -34,7 +34,8 @@
           <input class="form-control" [ngClass]="{
             'is-valid': loginForm.controls['password'].valid,
             'is-invalid': loginForm.controls['password'].invalid
-          }" type="text" name="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+          }" type="text" name="password" formControlName="password" [type]="hide ? 'password' : 'text'"
+            autocomplete="on" />
           <div class="input-group-prepend">
             <button class="btn" type="button" style="background-color: #d9dadb;" (click)="hide = !hide">
               <i class="bi bi-eye-fill blue-color" *ngIf="hide"></i>
