@@ -1,0 +1,67 @@
+<div class="container-fluid w-75 pt-3 pb-3">
+  <div class="card">
+    <h5 class="card-header">Login</h5>
+    <form class="card-body" [formGroup]="loginForm">
+      <div class="alert alert-danger" *ngIf="IsAuthenticationFailed$|async">
+        Invalid User Name or Password
+      </div>
+      <div class="form-group">
+        <label for="email">User Name:</label>
+        <input class="form-control" autofocus [ngClass]="{
+            'is-valid': loginForm.controls['email'].valid,
+            'is-invalid': loginForm.controls['email'].invalid
+          }" type="text" name="email" formControlName="email" placeholder="Ex. tset@example.com" />
+        <div class="alert alert-danger" [hidden]="
+            !(
+              loginForm.controls['email'].dirty &&
+              loginForm.controls['email'].errors?.['required']
+            )
+          ">
+          Enter User Name
+        </div>
+        <div class="alert alert-danger" [hidden]="
+            !(
+              loginForm.controls['email'].dirty &&
+              loginForm.controls['email'].errors?.['minlength']
+            )
+          ">
+          Minimum 6 characters needed for User Name
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <div class="input-group mb-3">
+          <input class="form-control" [ngClass]="{
+            'is-valid': loginForm.controls['password'].valid,
+            'is-invalid': loginForm.controls['password'].invalid
+          }" type="text" name="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <div class="input-group-prepend">
+            <button class="btn" type="button" style="background-color: #d9dadb;" (click)="hide = !hide">
+              <i class="bi bi-eye-fill blue-color" *ngIf="hide"></i>
+              <i class="bi bi-eye-slash-fill blue-color" *ngIf="!hide"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-danger" [hidden]="
+          !(
+            loginForm.controls['password'].dirty &&
+            loginForm.controls['password'].errors?.['required']
+          )
+        ">
+          Enter Password
+        </div>
+        <div class="alert alert-danger" [hidden]="
+          !(
+            loginForm.controls['password'].dirty &&
+            loginForm.controls['password'].errors?.['minlength']
+          )
+        ">
+          Minimum 6 characters needed for Password
+        </div>
+      </div>
+      <br />
+      <input type="submit" class="btn btn-success" value="Login" [disabled]="loginForm.invalid" (click)="login()" />
+    </form>
+  </div>
+</div>

@@ -20,9 +20,11 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@auth0/angular-jwt": "^5.1.0",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "chart.js": "^3.7.0",
+    "jwt-decode": "^3.1.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

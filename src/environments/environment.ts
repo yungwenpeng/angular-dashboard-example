@@ -14,3 +14,11 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+export const serverConfig = {
+  localhost: 'localhost',
+  port: '3000',
+};
+
+// For http client
+export const apiUrl = 'http://' + serverConfig.localhost + ':' + serverConfig.port + '/api/';

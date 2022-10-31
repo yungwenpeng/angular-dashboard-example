@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './routes/app-routing.module';
+import { AppRoutes } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -17,20 +17,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/http.interdceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
 
     MatButtonModule,
@@ -44,8 +48,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatToolbarModule,
 
     FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(AppRoutes),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,8 +31,13 @@ $ npm install
 $ ng serve  
   
 ## Others :  
-# Refer to [Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
-# Refer to [angular material](https://material.angular.io/components/categories)  
+[Line Chart](https://www.chartjs.org/docs/latest/samples/line/line.html#line-chart)  
+[angular material](https://material.angular.io/components/categories)  
+[Preventing unauthorized access](https://angular.io/guide/router#preventing-unauthorized-access)  
+[Communicating with backend services using HTTP](https://angular.io/guide/http#communicating-with-backend-services-using-http)  
+
+## Getting test RESTAPI  
+You can run "http://localhost:3000" from the [nodejs-example](https://github.com/yungwenpeng/nodejs-example)  
   
 ## Demo:  
 ![angular-dashboard-example](angular-dashboard-example.gif)  

@@ -6,26 +6,48 @@
     </a>
   </div>
   <!-- <i class="bi bi-menu-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" title="Nagivation menu"></i> -->
-  <div class="container-fluid col justify-content-end">
-    <span class="navbar-brand mb-0 h1">Welcome Guest</span>
+  <div class="container-fluid col" *ngIf="!isHiddenListItem()"><a href="/login" class="nav-link link-light"
+      aria-current="page">Login</a></div>
+  <div class="container-fluid col" *ngIf="isHiddenListItem()">
+    <span class="navbar-text text-white text-truncate">{{ (navbarItemName.length>22)? (navbarItemName | titlecase |
+      slice:0:22)+'...':(navbarItemName) }}</span>
+  </div>
+  <div class="container-fluid col justify-content-end" *ngIf="isHiddenListItem()">
+    <span class="navbar-brand mb-0 h1">Welcome {{LoginUserFirstName}}</span>
+    <a href="#" class="nav-link text-white" (click)="logout()">
+      <i class="bi bi-box-arrow-left"></i>&nbsp;Logout
+    </a>
   </div>
 </header>
 
 <!-- Sidebar -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header row">
-    <hr style="margin:0 auto">
+    <img src="../../assets/pg-logo.png" class="img-fluid" style="max-width: 170px; margin:0 auto" alt="pg-logo"
+      data-bs-dismiss="offcanvas">
+    <hr style="margin: 5px auto">
   </div>
   <div class="offcanvas-body">
+    <span class="mb-0 h5">Hi {{LoginUserFirstName}}</span>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link link-dark" aria-current="page">
+        <a href="/home" class="nav-link link-dark" aria-current="page">
           <i class="bi bi-house-door"></i> Home
         </a>
       </li>
       <li class="nav-item">
         <a href="/dashboard" class="nav-link link-dark">
           <i class="bi bi-columns"></i> Dashboard
+        </a>
+      </li>
+      <li *ngIf="!isHiddenListItem()" class="nav-item">
+        <a href="#" class="nav-link link-dark">
+          <i class="bi bi-box-arrow-right"></i> Login
+        </a>
+      </li>
+      <li *ngIf="isHiddenListItem()" class="nav-item">
+        <a href="#" class="nav-link link-dark" (click)="logout()">
+          <i class="bi bi-box-arrow-left"></i> Logout
         </a>
       </li>
     </ul>
