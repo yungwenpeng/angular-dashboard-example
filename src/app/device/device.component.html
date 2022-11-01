@@ -1,6 +1,6 @@
 <div class="container-fluid pt-3">
   <div class="card">
-    <h5 class="card-header text-white bg-gradient-primary">Device List</h5>
+    <h5 class="card-header text-white bg-info">Device List</h5>
     <div class="card-body">
       <div class="card-title">
       </div>
@@ -9,10 +9,9 @@
           <div class="card text-white bg-secondary mb-3">
             <div class="card-header">{{ item.name }}</div>
             <div class="card-body text-black bg-white">
-              <h5 class="card-title">Temperature: {{ item.temperature[item.temperature.length -1] }}</h5>
-              <canvas baseChart width="400" height="150"
-                [data]="item.lineChartData"
-                [options]="lineChartOptions"
+              <h8 class="card-title"><font color="#e36b3b">Temperature: {{ item.temperature[item.temperature.length -1] }} °C</font> ,
+                <font color="#36a2eb">Humidity: {{ item.humidity[item.humidity.length -1] }} %</font></h8>
+              <canvas baseChart width="400" height="150" [data]="item.lineChartData" [options]="lineChartOptions"
                 [type]="lineChartType"></canvas>
             </div>
           </div>

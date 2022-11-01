@@ -22,7 +22,7 @@ export class DeviceService {
         this.decodedToken = jwt_decode(localStorage['token']);
         if (this.decodedToken['scopes'][0] === 'CUSTOMER_USER') {
             // For customer fetch device info API
-            this.fetchDeviceUrl = apiUrl + 'customer/' + this.decodedToken['customerId'] + '/deviceInfos?pageSize=20&page=0'
+            this.fetchDeviceUrl = apiUrl + 'customer/' + this.decodedToken['customerId'] + '/deviceInfos?pageSize=100&page=0'
         } else if (this.decodedToken['scopes'][0] === 'TENANT_ADMIN') {
             // For tenant fetch device info API
             this.fetchDeviceUrl = apiUrl + 'tenant/deviceInfos?pageSize=20&page=0';
@@ -42,7 +42,7 @@ export class DeviceService {
                                 entityId: device.id,
                                 scope: "LATEST_TELEMETRY",
                                 cmdId: index,
-                                keys: "temperature"
+                                keys: "temperature,humidity"
                             }
                         ]
                     };
@@ -56,15 +56,24 @@ export class DeviceService {
                         if (obj.data.temperature) {
                             this.devices[obj.subscriptionId].timestamps.push(formatDate(new Date(obj.data.temperature[0][0]), "HH:mm:ss", this.locale));
                             this.devices[obj.subscriptionId].temperature.push(obj.data.temperature[0][1] as number);
+                            this.devices[obj.subscriptionId].humidity.push(obj.data.humidity[0][1] as number);
                         }
-                        if (this.devices[obj.subscriptionId].timestamps.length > 30) {
+                        if (this.devices[obj.subscriptionId].timestamps.length > 12) {
                             this.devices[obj.subscriptionId].timestamps.shift();
                             this.devices[obj.subscriptionId].temperature.shift();
+                            this.devices[obj.subscriptionId].humidity.shift();
                         }
                         this.devices[obj.subscriptionId].lineChartData = {
                             datasets: [
                                 {
-                                    data: this.devices[obj.subscriptionId].temperature
+                                    label: 'Temperature',
+                                    data: this.devices[obj.subscriptionId].temperature,
+                                    borderColor: 'rgb(227, 107, 59)'
+                                },
+                                {
+                                    label: 'Humidity',
+                                    data: this.devices[obj.subscriptionId].humidity,
+                                    borderColor: 'rgb(54, 162, 235)'
                                 }
                             ],
                             labels: this.devices[obj.subscriptionId].timestamps

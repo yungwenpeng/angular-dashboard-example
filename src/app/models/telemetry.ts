@@ -1,5 +1,6 @@
 interface Data {
     temperature?: (string | number)[][] | undefined;
+    humidity?: (string | number)[][] | undefined;
 }
 
 export interface Message {
@@ -7,5 +8,4 @@ export interface Message {
     errorCode: number;
     errorMsg: string | null;
     data: Data;
-
 }

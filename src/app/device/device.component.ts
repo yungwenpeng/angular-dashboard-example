@@ -12,6 +12,7 @@ import { ChartConfiguration, ChartType } from 'chart.js';
   styleUrls: ['./device.component.css'],
   providers: [DeviceService]
 })
+
 export class DeviceComponent {
   public lineChartType: ChartType = 'line';
   public lineChartOptions: ChartConfiguration['options'] = {
