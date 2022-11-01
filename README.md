@@ -36,8 +36,9 @@ $ ng serve
 [Preventing unauthorized access](https://angular.io/guide/router#preventing-unauthorized-access)  
 [Communicating with backend services using HTTP](https://angular.io/guide/http#communicating-with-backend-services-using-http)  
 
-## Getting test RESTAPI  
-You can run "http://localhost:3000" from the [nodejs-example](https://github.com/yungwenpeng/nodejs-example)  
+## Getting Thingsboard RESTAPI  
+Refer to [REST API](https://thingsboard.io/docs/reference/rest-api/)  
+Refer to [WebSocket API](https://thingsboard.io/docs/user-guide/telemetry/)  
   
 ## Demo:  
 ![angular-dashboard-example](angular-dashboard-example.gif)  
