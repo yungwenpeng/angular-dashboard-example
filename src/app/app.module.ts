@@ -27,6 +27,7 @@ import { TokenInterceptorService } from './services/http.interdceptor';
 import { DeviceComponent } from './device/device.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FloorComponent } from './dashboard/floor.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomeComponent,
     SidebarComponent,
     LoginComponent,
-    DeviceComponent
+    DeviceComponent,
+    FloorComponent
   ],
   imports: [
     BrowserModule,

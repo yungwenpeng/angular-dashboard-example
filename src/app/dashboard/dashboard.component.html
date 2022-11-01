@@ -1,22 +1,6 @@
-<p>dashboard works!</p>
-<div>
-    <mat-form-field appearance="fill">
-        <mat-label>Interval</mat-label>
-        <mat-select [(ngModel)]="selectedValue">
-            <mat-option *ngFor="let ti of timeIntervals" [value]="ti.value">
-                {{ti.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-list>
-        <mat-list-item >Current Temperature: {{ lastestTemperatureReading }} °C ,
-             Humidity: {{lastestHumidityReading}} %</mat-list-item>
-    </mat-list>
-</div>
-
-
-
-<div>
-    <canvas id="chartTimeseries"></canvas>
+<div class="container-fluid pt-3" style="width: 80%;">
+    <div id="topo">Commercial Building</div>
+    <ul id="andares" *ngFor="let item of floors$|async">
+        <li (click)="entryFloor(item.id)"><div class="frente">{{ item.name }}</div><div class="lado"></div></li>
+    </ul>
 </div>

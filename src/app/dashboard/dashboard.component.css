@@ -1,0 +1,58 @@
+#topo {
+    background-color: #185291;
+    width: 200px;
+    height: 30px;
+    transform: skewX(-45deg);
+    -webkit-transform: skewX(-45deg);
+    -moz-transform: skewX(-45deg);
+    -o-transform: skewX(-45deg);
+    -ms-transform: skewX(-45deg);
+    margin: 30px 0px 24px -6px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  
+  #andares {
+    list-style-type: none;
+    margin: 2px;
+  }
+  
+  #andares .frente {
+    background-color: #2762a1;
+    width: 197px;
+    height: 30px;
+    transform: translate(-54px);
+    -webkit-transform: translate(-54px);
+    -moz-transform: translate(-54px);
+    -o-transform: translate(-54px);
+    -ms-transform: translate(-54px);
+    margin-top: -18px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px;
+    color: white;
+  }
+  
+  #andares li:hover .frente {
+    background-color: #eedb22;
+    color: rgb(97, 70, 70);
+  }
+  
+  #andares .lado {
+    background-color: #2762a1;
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+    margin-left: 99px;
+    transform: translate(52px) rotate(90deg) scale(1.5) skewX(45deg) translate(-27px);
+    -webkit-transform: translate(52px) rotate(90deg) scale(1.5) skewX(45deg) translate(-27px);
+    -moz-transform: translate(52px) rotate(90deg) scale(1.5) skewX(45deg) translate(-27px);
+    -o-transform: translate(52px) rotate(90deg) scale(1.5) skewX(45deg) translate(-27px);
+    -ms-transform: translate(52px) rotate(90deg) scale(1.5) skewX(45deg) translate(-27px);
+  }
+  
+  #andares li:hover .lado {
+    background-color: #8f8e0d;
+  }
