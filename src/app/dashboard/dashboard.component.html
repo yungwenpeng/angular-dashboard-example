@@ -1,6 +1,9 @@
 <div class="container-fluid pt-3" style="width: 80%;">
     <div id="topo">Commercial Building</div>
     <ul id="andares" *ngFor="let item of floors$|async">
-        <li (click)="entryFloor(item.id)"><div class="frente">{{ item.name }}</div><div class="lado"></div></li>
+        <li (click)="entryFloor(item.id)">
+            <div class="frente">{{ item.name }}</div>
+            <div class="lado"></div>
+        </li>
     </ul>
 </div>

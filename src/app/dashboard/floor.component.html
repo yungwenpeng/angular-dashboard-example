@@ -1,4 +1,34 @@
 <div class="container-fluid pt-3">
-    <div fxLayout="rol wrap" fxLayoutGap="5px grid">
+  <div class="card">
+    <h5 class="card-header text-white bg-info">Floor id: {{fromId}}</h5>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div *ngFor="let item of rooms$|async">
+        <div class="main-content card mb-3">
+          <div class="door-hor"></div>
+          <div class="window-hor"></div>
+          <div class="bed">
+            <div class="table"></div>
+            <div class="blanket"></div>
+            <div class="pillow"></div>
+            <div class="pillow"></div>
+            <div class="bi bi-thermometer-half" *ngIf="item.deviceName.length>0">
+              <div class="overlay" >
+                Device: {{ item.deviceName }}<br>
+                Temperature: {{ item.temperature[item.temperature.length -1] }} °C<br>
+                Humidity: {{ item.humidity[item.humidity.length -1] }} %
+              </div>
+            </div>
+          </div>
+          <div class="bathroom">
+            <div class="door-hor"></div>
+            <div class="shower"></div>
+            <div class="toilet"></div>
+            <div class="vanity"></div>
+          </div>
+          <div class="name">{{item.toName.substr(5)}}</div>
+        </div>
+      </div>
     </div>
+  </div>
+
 </div>
