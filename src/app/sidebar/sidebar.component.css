@@ -25,8 +25,13 @@
 #offcanvasExample {
   background-image: url(../../assets/siderbar_bg.png);
   height: 100%;
-  max-width: 25%;
+  max-width: 20%;
   background-repeat: no-repeat space;
   background-position: center;
   background-size: cover;
+}
+
+.nav-item:hover {
+  background-color: #ebe264;
+  border-radius: 30%;
 }

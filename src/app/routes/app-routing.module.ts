@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { FloorComponent } from "../dashboard/floor.component";
+import { RoomdetailsComponent } from "../dashboard/roomdetails.component";
 import { DeviceComponent } from "../device/device.component";
 import { AuthGuard } from '../guards/auth.guard';
 import { HomeComponent } from '../home/home.component';
@@ -11,7 +12,8 @@ export const AppRoutes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'device', component: DeviceComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  {path: 'dashboard/:id', component:FloorComponent},
+  { path: 'dashboard/:id', component: FloorComponent },
+  { path: 'dashboard/:id/:id', component: RoomdetailsComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

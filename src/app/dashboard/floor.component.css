@@ -5,6 +5,7 @@
   border: 4px solid #096b72;
   border-width: 4px;
   position: relative;
+  caret-color: transparent;
 }
 
 .main-content>div {

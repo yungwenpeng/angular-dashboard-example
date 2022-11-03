@@ -1,0 +1,75 @@
+<div class="container-fluid pt-2">
+    <div class="main-container">
+        <div class="roomId">{{ roomAssetName }}</div>
+        <div *ngFor="let item of roomDetails$|async">
+            <div class="roomId ">
+                <span style="font-size:15px;" *ngIf="item.deviceName">Device name: {{ item.deviceName }}</span>
+            </div>
+            <div class='noteDiv' [ngStyle]="{'backgroundImage': 'url(' + item.notifyStatusImagesUrl + ')'}"></div>
+            <div class='infos row col-11 mx-auto'>
+                <div class='detail-image col'>
+                    <!-- <div class='detailInfoPhoto'[ngStyle]="{'backgroundImage': 'url(' + item.detailsImageUrl + ')'}"></div> -->
+                    <input id="upload" style="display:none" type="file" accept=".png, .jpg, .jpeg"
+                        (change)="handleImageUpload($event)">
+                    <div class='detailInfoPhoto'>
+                        <img width="128px" height="128px" src='{{item.detailsImageUrl}}' title="Upload your photos"
+                            alt="Upload your photos" onclick="upload.click()">
+                    </div>
+                </div>
+                <div class='temperature col'>
+                    <div class='temperatureIcon'
+                        [ngStyle]="{'backgroundImage': 'url(' + item.temperatureImageUrl + ')'}">
+                    </div>
+                    <div class='temperatureWord' *ngIf="item.temperature.length > 0">
+                        <p *ngIf="item.temperature[item.temperature.length -1] >= 27; then highBlock else normalBlock">
+                        </p>
+                        <ng-template #highBlock>
+                            <font color="#ed250e"> {{item.temperature[item.temperature.length -1]}} °C </font>
+                        </ng-template>
+                        <ng-template #normalBlock>
+                            <font color="#1c1b1b"> {{item.temperature[item.temperature.length -1]}} °C </font>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class='humidity col'>
+                    <div class='humidityIcon' [ngStyle]="{'backgroundImage': 'url(' + item.humidityImageUrl + ')'}">
+                    </div>
+                    <div class='humidityWord' *ngIf="item.humidity.length > 0">
+                        <p>{{item.humidity[item.humidity.length -1]}} %</p>
+                    </div>
+                </div>
+            </div>
+            <div class='linechart-card col-10 mx-auto'>
+                <canvas baseChart width="400" height="150" [data]="item.lineChartData" [options]="lineChartOptions"
+                    [type]="lineChartType"></canvas>
+            </div>
+            <div class="mx-auto col-xs-12 col-sm-10 col-md-10">
+                <div class="d-grid gap-2 col-10 mx-auto" *ngIf="item.deviceName">
+                    <button type="button" class="btn btn-secondary btn-lg"
+                        (click)="displayHighTemperatureEventHistory()">
+                        {{isDisplayHistory ? 'Hide alarm event hsitory' : 'Alarm event hsitory'}}
+                    </button>
+                </div>
+                <div class="mx-auto justify-content-center" style="position: relative; margin: 5px;"
+                    *ngIf="isDisplayHistory">
+                    <ol class="list-group" *ngFor="let e of eventHistories$|async; index as i">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="col-2">
+                                <img src="../../assets/high-temperature-warn-icon.png" alt="" width="50" height="50">
+                            </div>
+                            <div class="col-6 text-truncate">
+                                <div class="fw-bold">
+                                  {{ e.name }}
+                                </div>
+                                {{ e.createdTime }}
+                              </div>
+                              <div class="col-2 text-truncate" style="word-wrap:break-word;">
+                                  {{ e.status }}
+                              </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

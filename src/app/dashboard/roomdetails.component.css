@@ -1,0 +1,85 @@
+.container-fluid {
+    caret-color: transparent;
+}
+
+.main-container {
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 800px;
+    background-image: linear-gradient(135deg, #d6f1e9 10%, #08e979 100%);
+}
+
+.roomId {
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.noteDiv {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    top: 10px;
+    z-index: 10;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.detail-image {
+    flex-grow: 2;
+    margin: 15px;
+    column-width: auto;
+}
+
+.detailInfoPhoto {
+    max-height: 144px;
+    padding: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.temperature,
+.col {
+    flex-grow: 1;
+    margin: 15px auto;
+    column-width: auto;
+}
+
+.temperatureIcon,
+.humidityIcon {
+    height: 80px;
+    margin: 30px auto;
+    font-weight: bold;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.temperatureWord,
+.humidityWord {
+    height: 12%;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+}
+
+.linechart-card {
+    flex-grow: 1;
+    margin: 10px auto;
+    padding: 2px;
+    position: relative;
+    border-radius: 20px;
+    border-style: double;
+    justify-content: center;
+    border-color: rgb(49, 49, 49);
+}

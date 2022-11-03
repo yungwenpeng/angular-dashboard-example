@@ -19,4 +19,12 @@ export class FloorComponent {
     console.log('FloorComponent: ', this.fromId);
     this.rooms$ = FloorService.rooms$;
   }
+
+  entryRoomDetails(id: string, name: string, deviceId: string) {
+    localStorage.setItem('roomAssetId', id);
+    localStorage.setItem('roomAssetName', name);
+    localStorage.setItem('deviceId', deviceId);
+    console.log("entryRoomDetails: ", localStorage.getItem('roomAssetId'));
+    this.router.navigate(['dashboard', localStorage.getItem('floorAssetId'), localStorage.getItem('roomAssetId')]);
+  }
 }

@@ -3,7 +3,7 @@
     <h5 class="card-header text-white bg-info">Floor id: {{fromId}}</h5>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div *ngFor="let item of rooms$|async">
-        <div class="main-content card mb-3">
+        <div class="main-content card mb-3" (click)="entryRoomDetails(item.toid, item.toName, item.deviceId)">
           <div class="door-hor"></div>
           <div class="window-hor"></div>
           <div class="bed">

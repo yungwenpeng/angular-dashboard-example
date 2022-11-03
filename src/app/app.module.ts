@@ -28,6 +28,7 @@ import { DeviceComponent } from './device/device.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FloorComponent } from './dashboard/floor.component';
+import { RoomdetailsComponent } from './dashboard/roomdetails.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FloorComponent } from './dashboard/floor.component';
     SidebarComponent,
     LoginComponent,
     DeviceComponent,
-    FloorComponent
+    FloorComponent,
+    RoomdetailsComponent
   ],
   imports: [
     BrowserModule,
