@@ -35,7 +35,7 @@ $ ng serve
 [angular material](https://material.angular.io/components/categories)  
 [Preventing unauthorized access](https://angular.io/guide/router#preventing-unauthorized-access)  
 [Communicating with backend services using HTTP](https://angular.io/guide/http#communicating-with-backend-services-using-http)  
-[UXWING png download](hhttps://uxwing.com/)
+[UXWING png download](hhttps://uxwing.com/)  
 
 ## Getting Thingsboard RESTAPI  
 Refer to [REST API](https://thingsboard.io/docs/reference/rest-api/)  
